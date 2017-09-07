@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
 
-	belongs_to :tasks_file
+	belongs_to :file
 	
 end
