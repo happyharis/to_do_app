@@ -1,0 +1,53 @@
+<div class="container">
+	
+<table class="table table-stripped">
+	<thead>
+		<th>Goals</th>
+
+		<th>Buttons</th>
+
+		<th>History</th>
+
+		<th>Priority</th>
+
+		<th>Progress</th>
+
+	</thead>
+		
+		<% @tasks.each do |task|%>
+	
+	<tbody>
+
+		<tr>
+			<td><%= task.description %></td>
+
+			<td>
+					<%= link_to 'Edit', edit_task_path(id: task.id), :class => 'btn btn-primary' %>
+
+					<%= link_to 'Delete', task_path(id: task.id), :class => 'btn btn-success',
+					method: :delete,
+					data: { confirm: 'Are you sure you comepleted?' } %>
+
+					<%= link_to 'Complete 😄', edit_task_path(id: task.id), :class => 'btn btn-warning' %>
+
+			</td>
+		
+			<td><%= task.created_at.strftime("Created at %m/%d/%Y")%> <br> <%=task.updated_at.strftime("Updated at %m/%d/%Y")%></td>
+			
+			<td> <%= task.priority %> </td>	
+
+			<td> <%= task.progress %> </td>
+		</tr>
+
+
+		<% end %>
+	</tbody>
+
+</table>
+
+	<button type="button" class="btn btn-info">	
+	<%= link_to 'Set goals', new_task_path %>
+	</button>
+
+</div>
+

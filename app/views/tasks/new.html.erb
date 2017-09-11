@@ -1,0 +1,33 @@
+<%= form_for @task, url: tasks_path, method: :post do |f| %>
+	
+	<div class="container">
+		
+		<div><h1>Your <strong>Goals</strong> </h1></div>
+
+		<div><%= f.text_area :description, size: "150x10" %></div>
+	
+		<div class="container">
+			
+			<div class="radio">
+				<%= f.radio_button(:priority, "High") %>
+				<%= f.label(:priority, "High") %>
+			</div>
+			
+			<div class="radio">
+				<%= f.radio_button(:priority, "Medium") %>
+				<%= f.label(:priority, "Medium") %>
+			</div>
+
+			<div class="radio">
+				<%= f.radio_button(:priority, "Low") %>
+				<%= f.label(:priority, "Low") %>
+			</div>
+
+		</div>
+		
+		<div><%= f.submit "Let's do this", :class => 'btn btn-primary btn-lg btn-block' %></div>
+	
+	</div>
+	
+<% end %>
+

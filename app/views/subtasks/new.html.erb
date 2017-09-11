@@ -1,0 +1,38 @@
+<%= form_for @subtask, url: task_subtasks_path(task_id: @task_id), method: :post do |f| %>
+	
+	<div class="container">
+		
+		<div><h1>Your <strong>Small</strong> Tasks</h1></div>
+
+		<div><%= f.text_area :description, size: "150x10" %></div>
+	
+		<div class="container">
+			
+			<div class="radio">
+				<%= f.radio_button(:priority, "High") %>
+				<%= f.label(:priority, "High") %>
+			</div>
+			
+			<div class="radio">
+				<%= f.radio_button(:priority, "Medium") %>
+				<%= f.label(:priority, "Medium") %>
+			</div>
+
+			<div class="radio">
+				<%= f.radio_button(:priority, "Low") %>
+				<%= f.label(:priority, "Low") %>
+			</div>
+
+		</div>
+		
+		<div>
+			<button type="button" class="btn btn-primary btn-lg btn-block">
+			<%= f.submit "Let's do this" %>
+			</button>
+		</div>
+
+	
+	</div>
+<% end %>
+
+<p><%= subtask.description %></p>

@@ -1,5 +1,9 @@
 class TasksController < ApplicationController
 
+	def index
+		@tasks = Task.all
+	end
+
 	def new
 		@task = Task.new
 	end
@@ -8,14 +12,15 @@ class TasksController < ApplicationController
 		task_params = params[:task].permit(:description, :priority)
 		@task = Task.new(task_params)
 		if @task.save
-			redirect_to task_path(id: @task_id)
+			redirect_to tasks_path
 		else
-			render: new
+			render :new
 		end
 	end
 
 	def show
 		@task = Task.find(params[:id])
+		@subtask = Subtask.new
 	end
 
 	def edit
@@ -26,16 +31,21 @@ class TasksController < ApplicationController
 		task_params = params[:task].permit(:description, :priority)
 		@task = Task.find(params[:id])
 		if @task.update(task_params)
-			redirect_to task_path(:id @task_id)
+			redirect_to tasks_path
 		else
-			render: view
+			render :view
 		end
-		redirect_to task_path(:id @task_id)
+		
 	end
 
-	def complete
-		@task =Task.find(params[:id])
+	def destroy
+		@task = Task.find(params[:id])
 		@task.destroy
 		redirect_to tasks_path
 	end
+
+	def completed
+		@task = Task.find(params[:id])
+	end
+
 end

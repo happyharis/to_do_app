@@ -10,19 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170905110708) do
+ActiveRecord::Schema.define(version: 20170908093251) do
 
-  create_table "tasks", force: :cascade do |t|
+  create_table "subtasks", force: :cascade do |t|
     t.text "description"
     t.string "priority"
-    t.integer "task_id"
+    t.string "due"
+    t.string "progress", default: "In-Progress"
+    t.integer "tasks_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["task_id"], name: "index_tasks_on_task_id"
+    t.index ["tasks_id"], name: "index_subtasks_on_tasks_id"
   end
 
-  create_table "tasks_files", force: :cascade do |t|
-    t.string "name"
+  create_table "tasks", force: :cascade do |t|
+    t.string "due"
+    t.text "description"
+    t.string "priority"
+    t.string "progress", default: "In-Progress"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

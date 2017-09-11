@@ -1,5 +1,7 @@
-class Task < ApplicationRecord
+class Task < ActiveRecord::Base
 
-	belongs_to :file
-	
+	has_many :subtasks
+	validates :priority, presence: true
+	validates :description, presence: true
+
 end
