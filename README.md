@@ -1,24 +1,8 @@
-# README
+# Ruby on Rails To-Do App
+A simple CRUD application that uses Ruby on Rails and first assignment I did during the Bootcamp. The app could add, delete and have the dateline of your task
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## How to run it
+Make sure you bundle install
+`bundle install`
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Then, `rake db:migrate` and finally, `rails s`.
