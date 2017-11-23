@@ -5,7 +5,7 @@ class CreateSubtasks < ActiveRecord::Migration[5.1]
     	t.string :priority
     	t.string :due
     	t.string :progress, default: "In-Progress"
-        t.references :tasks, index: true
+        t.references :task, foreign_key: true
     	t.timestamps
     end
   end

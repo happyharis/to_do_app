@@ -5,6 +5,8 @@
 		<div><h1>Your <strong>Small</strong> Tasks</h1></div>
 
 		<div><%= f.text_area :description, size: "150x10" %></div>
+
+		<div><%= select_date Date.today, prefix: :due %></div>
 	
 		<div class="container">
 			
@@ -26,13 +28,8 @@
 		</div>
 		
 		<div>
-			<button type="button" class="btn btn-primary btn-lg btn-block">
-			<%= f.submit "Let's do this" %>
-			</button>
+			<%= f.submit "Let's do this", class: "btn btn-primary btn-lg btn-block" %>
 		</div>
 
-	
 	</div>
 <% end %>
-
-<p><%= subtask.description %></p>

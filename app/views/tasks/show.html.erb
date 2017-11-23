@@ -1,83 +1,18 @@
 <div class="container">
 	
-	<div>
+	<h3> Your task : </h3>
 
-		<% if @task.subtasks.any? %>
-			
-			<h3> <%= @task.subtasks.count %> steps on how to achieve your <%= @task.description %> of <%= @task.priority %> importance !</h3>
-			
-		<% end %>
-			
-	</div>
+		<p><%= @task.description %></p>
 
-		<div class="row">
+	<h3> And it's due on : </h3>
 
-		<div class="col-md-4 steps">
+		<p><%= @task.due %></p>
 
-			<div><h1>Steps</h1></div>
-		
+	<h3> Your progress : </h3>
 
-				<div id="subtasks_wrapper">
-					<%= render @task.subtasks %>
-					<div id="form">
-					<%= render "subtasks/form" %>
-					</div>
-				</div>
-
-			<% end %>
-			
-		</div>
-			
-			<div class="col-md-6 s-task">
-
-			<%= form_for @subtask, url: task_subtasks_path(task_id: @task.id), method: :post do |f| %>
-			
-			<div><h1>Your <strong>Steps</strong> </h1></div>
-
-			<div><%= f.text_area :description, size: "40x10" %></div>
-
-			<div><h3>Complete in: </h3><%= select_date Date.today, prefix: :due %></div>
-		
-			<div class="container">
-
-				<div><h3>Importance</h3></div>
-
-				<div class="row">
-								
-					<div class="col-md-1 radio">
-						<%= f.radio_button(:priority, "High") %>
-						<%= f.label(:priority, "High") %>
-					</div>
-					
-					<d1iv class="col-md-1 radio">
-						<%= f.radio_button(:priority, "Medium") %>
-						<%= f.label(:priority, "Medium") %>
-					</div>
-
-					<div class="col-md-1 radio">
-						<%= f.radio_button(:priority, "Low") %>
-						<%= f.label(:priority, "Low") %>
-					</div>
-
-				</div>
-			</div>
-			
-			<div>
-
-				<%= f.submit "Let's do this", :class => "btn btn-primary btn-lg btn-block" %>
-
-			</div>
-
-			<% end %>
-		
-			</div>
+	<p><%= @task.progress %></p>
 
 
+	<%= link_to 'edit', edit_task_path(id: @task.id) %>
 	
-	<div>
-		
-		<%= link_to 'New', new_task_path %>
-
-	</div>
-
-</div> 
+</div>

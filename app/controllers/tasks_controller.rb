@@ -9,10 +9,10 @@ class TasksController < ApplicationController
 	end
 
 	def create
-		task_params = params[:task].permit(:description, :priority)
+		task_params = params[:task].permit(:description, :priority, :due)
 		@task = Task.new(task_params)
 		if @task.save
-			redirect_to tasks_path
+			redirect_to task_path(id: @task.id)
 		else
 			render :new
 		end
@@ -44,8 +44,10 @@ class TasksController < ApplicationController
 		redirect_to tasks_path
 	end
 
-	def completed
+	def complete
 		@task = Task.find(params[:id])
+		@task.update_attribute(:progress, "Completed")
+		redirect_to task_path
 	end
 
 end

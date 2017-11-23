@@ -1,3 +1,5 @@
 <p><%= subtask.description %></p>
 
 <%= link_to "Delete", task_subtasks_path(@task, subtask.id), :class => 'btn btn-success', method: :delete, data: { confirm: "Are you sure?"} %>
+
+<%= link_to "Mark as completed", complete_task_subtask_path(@task, subtask.id), method: :patch %>

@@ -5,7 +5,12 @@
 		<div><h1>Your <strong>Goals</strong> </h1></div>
 
 		<div><%= f.text_area :description, size: "150x10" %></div>
-	
+
+		<div>
+			<%= f.label :due %>
+			<%= select_date Date.today, prefix: :start_date  %>
+		</div>
+
 		<div class="container">
 			
 			<div class="radio">
@@ -25,8 +30,10 @@
 
 		</div>
 		
-		<div><%= f.submit "Let's do this", :class => 'btn btn-primary btn-lg btn-block' %></div>
-	
+		<div>
+			<%= f.submit "Let's do this", class: "btn btn-primary btn-lg btn-block" %>
+		
+		</div>
 	</div>
 	
 <% end %>

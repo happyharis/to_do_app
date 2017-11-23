@@ -7,8 +7,14 @@ class SubtasksController < ApplicationController
 	end
 
 	def create
-		@subtask = @task.subtasks.create(subtask_params)
-		redirect_to @task
+		subtask_params = params.require(:description).permit(:description, :due, :priority)
+		task.subtasks.create(subtask_params)
+		redirect_to task_path(id: task.id)
+	end
+
+	def complete
+		@subtask.update_attribute(:completed_at, Time.now)
+		redirect_to "tasks#index"
 	end
 
 	def destroy
@@ -18,7 +24,7 @@ class SubtasksController < ApplicationController
 		else
 			flash[:error] = "Not comepleted"
 		end
-		redirect_to @task
+		redirect_to task_subtask_path
 	end
 
 	private
@@ -32,6 +38,5 @@ class SubtasksController < ApplicationController
 	end
 
 end
-
 
 

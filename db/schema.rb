@@ -10,17 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170908093251) do
+ActiveRecord::Schema.define(version: 20170911000705) do
+
+  create_table "completed_at_subtasks", force: :cascade do |t|
+    t.datetime "completed_at"
+  end
 
   create_table "subtasks", force: :cascade do |t|
     t.text "description"
     t.string "priority"
     t.string "due"
     t.string "progress", default: "In-Progress"
-    t.integer "tasks_id"
+    t.integer "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tasks_id"], name: "index_subtasks_on_tasks_id"
+    t.index ["task_id"], name: "index_subtasks_on_task_id"
   end
 
   create_table "tasks", force: :cascade do |t|
